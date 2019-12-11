@@ -1,0 +1,2 @@
+# transparency
+Plugin de transparencia
