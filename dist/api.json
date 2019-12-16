@@ -4,35 +4,27 @@
     "separator": "*"
   },
   "constructor": "M.plugin.Transparency",
-  "parameters": [
-    {
-      "type": "object",
-      "properties": [
-        {
-          "type": "enum",
-          "name": "position",
-          "possibleValues": [
-            "TL",
-            "TR",
-            "BL",
-            "BR"
-          ],
-          "position": 0
-        },
-        {
-          "type": "simple",
-          "name": "layers",
-          "position": 1
-        },
-        {
-          "type": "simple",
-          "name": "radio",
-          "value": 100,
-          "position": 2
-        }
-      ]
-    }
-  ],
+  "parameters": [{
+    "type": "object",
+    "properties": [{
+        "type": "enum",
+        "name": "position",
+        "possibleValues": ["TL", "TR", "BL", "BR"],
+        "position": 0
+      },
+      {
+        "type": "simple",
+        "name": "layers",
+        "position": 1
+      },
+      {
+        "type": "simple",
+        "name": "radius",
+        "value": 100,
+        "position": 2
+      }
+    ]
+  }],
   "files": {
     "ol": {
       "scripts": "transparency.ol.min.js",
