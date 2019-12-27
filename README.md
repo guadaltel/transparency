@@ -1,6 +1,6 @@
 # M.plugin.Transparency
 
-Plugin que da la opción de seleccionar entre 2 tipos de efectos para el mapa, una lupa y una circunferencia que vuelve transparente las capas seleccionadas.
+Plugin que permite aplicar un efecto de transparencia a las capas seleccionadas.
 
 ![Imagen1](./img/transparency_1.png)
 
