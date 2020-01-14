@@ -27,8 +27,8 @@
   }],
   "files": {
     "ol": {
-      "scripts": "transparency.ol.min.js",
-      "styles": "transparency.ol.min.css"
+      "scripts": ["transparency.ol.min.js"],
+      "styles": ["transparency.ol.min.css"]
     }
   },
   "metadata": {
