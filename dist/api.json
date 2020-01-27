@@ -14,7 +14,7 @@
       },
       {
         "type": "simple",
-        "name": "layers",
+        "name": "layer",
         "position": 1
       },
       {

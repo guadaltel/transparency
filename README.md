@@ -1,6 +1,6 @@
 # M.plugin.Transparency
 
-Plugin que permite aplicar un efecto de transparencia a las capas seleccionadas.
+Plugin que permite aplicar un efecto de transparencia a la capa seleccionada.
 
 ![Imagen1](./img/transparency_1.png)
 
@@ -19,7 +19,8 @@ Plugin que permite aplicar un efecto de transparencia a las capas seleccionadas.
 
 - El constructor se inicializa con un JSON de options con los siguientes atributos:
 
-- **layers**. String que contiene el nombre de las capas que se quieren seleccionar del mapa. A estas capas se les aplicará el filtro de transparencia.
+- **layer**. Parámetro obligatorio. String que contiene el nombre de la capa (que está en el mapa) o la url en formato mapea para insertar una capa a través de servicios WMS ó WMTS. 
+  A esta capa se le aplicará el efecto de transparencia.
 
 - **position**. Indica la posición donde se mostrará el plugin.
   - 'TL':top left
@@ -35,30 +36,36 @@ Plugin que permite aplicar un efecto de transparencia a las capas seleccionadas.
 
 # Ejemplos de uso
 
+## Ejemplo 1
+Insertar un capa a través de un servicio WMTS.
 ```javascript
-   const map = M.map({
-     container: 'map'
-   });
-
-   const mp = new M.plugin.Transparency({
-        layers: '',
-        postition: 'TL',
-      });
+  const mp = new M.plugin.Transparency({
+    layer: 'wmts**http://www.ideandalucia.es/geowebcache/service/wmts*toporaster',
+    postition: 'TL',
+  });
 
    map.addPlugin(mp);
 ```
 
+## Ejemplo 2
+Aplicar a una capa ("provincias") que se encuentra en el mapa.
+
 ```javascript
-const mp = new Transparency({
-  layers: 'provincias,fondo,Sevilla',
+const mp = new M.plugin.Transparency({
+  layer: 'provincias',
   radius: 150,
 });
 
 map.addPlugin(mp);
 ```
-
+## Ejemplo 3
+Insertar un capa a través de un servicio WMS.
 ```javascript
-const mp = new Transparency({});
+  const mp = new M.plugin.Transparency({
+    layer: 'WMS**http://www.ign.es/wms-inspire/ign-base*IGNBaseTodo',
+    postition: 'TL',
+  });
 
-map.addPlugin(mp);
+   map.addPlugin(mp);
 ```
+
