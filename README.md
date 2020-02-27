@@ -3,6 +3,7 @@
 Plugin que permite aplicar un efecto de transparencia a la capa seleccionada.
 
 ![Imagen1](./img/transparency_1.png)
+![Imagen1](./img/transparency_2.png)
 
 # Dependencias
 
@@ -19,7 +20,7 @@ Plugin que permite aplicar un efecto de transparencia a la capa seleccionada.
 
 - El constructor se inicializa con un JSON de options con los siguientes atributos:
 
-- **layer**. Parámetro obligatorio. String que contiene el nombre de la capa (que está en el mapa) o la url en formato mapea para insertar una capa a través de servicios WMS ó WMTS. 
+- **layer**. Parámetro obligatorio. Array que contiene el/los nombre/s de la/s capa/s (que está/n en el mapa) o la/s url en formato mapea para insertar una capa a través de servicios WMS ó WMTS. 
   A esta capa se le aplicará el efecto de transparencia.
 
 - **position**. Indica la posición donde se mostrará el plugin.
@@ -37,35 +38,66 @@ Plugin que permite aplicar un efecto de transparencia a la capa seleccionada.
 # Ejemplos de uso
 
 ## Ejemplo 1
-Insertar un capa a través de un servicio WMTS.
+Insertar un capa a través de un servicio WMS.
 ```javascript
   const mp = new M.plugin.Transparency({
-    layer: 'wmts**http://www.ideandalucia.es/geowebcache/service/wmts*toporaster',
-    postition: 'TL',
-  });
+  position: 'TL',
+  layers: ['WMS*IGN*http://www.ign.es/wms-inspire/ign-base*IGNBaseTodo'],
+  collapsible: false
+});
 
    map.addPlugin(mp);
 ```
 
 ## Ejemplo 2
-Aplicar a una capa ("provincias") que se encuentra en el mapa.
-
-```javascript
-const mp = new M.plugin.Transparency({
-  layer: 'provincias',
-  radius: 150,
-});
-
-map.addPlugin(mp);
-```
-## Ejemplo 3
-Insertar un capa a través de un servicio WMS.
+Insertar dos capas a través de servicio WMS.
 ```javascript
   const mp = new M.plugin.Transparency({
-    layer: 'WMS**http://www.ign.es/wms-inspire/ign-base*IGNBaseTodo',
-    postition: 'TL',
-  });
+  position: 'TL',
+  layers: ['WMS*Redes*http://www.ideandalucia.es/wms/mta400v_2008?*Redes_energeticas', 'WMS*IGN*http://www.ign.es/wms-inspire/ign-base*IGNBaseTodo']
+});
 
    map.addPlugin(mp);
 ```
 
+## Ejemplo 3
+Insertar una capa WMTS por nombre.
+```javascript
+let wmts = new M.layer.WMTS({
+  url: "http://www.ideandalucia.es/geowebcache/service/wmts",
+  name: "toporaster",
+  matrixSet: "EPSG:25830",
+  legend: "Toporaster"
+}, {
+  format: 'image/png'
+});
+map.addWMTS(wmts);
+  const mp = new M.plugin.Transparency({
+  position: 'TL',
+  layers: ['toporaster'],
+});
+
+   map.addPlugin(mp);
+```
+
+
+## Ejemplo 4
+Especificar radio
+```javascript
+let wmts = new M.layer.WMTS({
+  url: "http://www.ideandalucia.es/geowebcache/service/wmts",
+  name: "toporaster",
+  matrixSet: "EPSG:25830",
+  legend: "Toporaster"
+}, {
+  format: 'image/png'
+});
+map.addWMTS(wmts);
+  const mp = new M.plugin.Transparency({
+  position: 'TL',
+  layers: ['toporaster'],
+  radius: 200
+});
+
+   map.addPlugin(mp);
+```
