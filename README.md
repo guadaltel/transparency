@@ -97,11 +97,11 @@ const mp = new M.plugin.Transparency({
 ```
 
 ## Ejemplo 5
-Insertar una capa a través de servicio WMTS. Sigue la misma estructura que las WMS.
+Insertar una capa a través de servicio WMTS.
 ```javascript
   const mp = new M.plugin.Transparency({
   position: 'TL',
-  layers: ['WMTS*IGN*http://www.ideandalucia.es/geowebcache/service/wmts*toporaster']
+  layers: ['WMTS*http://www.ign.es/wmts/pnoa-ma?*OI.OrthoimageCoverage*EPSG:25830*PNOA']
 });
 
    map.addPlugin(mp);
